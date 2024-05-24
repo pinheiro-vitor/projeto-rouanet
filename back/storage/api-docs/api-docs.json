@@ -1,0 +1,526 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Documentação do Projeto Rouanet",
+        "description": "Documentação da API para o projeto Rouanet",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api": {},
+        "/api/projetos": {
+            "get": {
+                "tags": [
+                    "Projetos"
+                ],
+                "summary": "Retorna a lista de projetos",
+                "description": "Retorna a lista de projetos",
+                "operationId": "getProjetosList",
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Projeto"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    },
+                    "404": {
+                        "description": "Não encontrado"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Projetos"
+                ],
+                "summary": "Cria um novo projeto",
+                "description": "Cria um novo projeto",
+                "operationId": "storeProjeto",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjetoCreateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Projeto criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    }
+                }
+            }
+        },
+        "/api/projetos/{id}": {
+            "get": {
+                "tags": [
+                    "Projetos"
+                ],
+                "summary": "Retorna um projeto pelo ID",
+                "description": "Retorna um projeto pelo ID",
+                "operationId": "getProjetoById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Projeto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Não encontrado"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Projetos"
+                ],
+                "summary": "Atualiza um projeto existente",
+                "description": "Atualiza um projeto existente",
+                "operationId": "updateProjeto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Projeto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProjetoUpdateRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Projeto atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projeto"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Erro de validação"
+                    },
+                    "404": {
+                        "description": "Não encontrado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Projetos"
+                ],
+                "summary": "Deleta um projeto",
+                "description": "Deleta um projeto",
+                "operationId": "deleteProjeto",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Projeto",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Projeto deletado com sucesso"
+                    },
+                    "404": {
+                        "description": "Não encontrado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Projeto": {
+                "title": "Projeto",
+                "properties": {
+                    "id_projeto": {
+                        "type": "integer"
+                    },
+                    "pronac": {
+                        "type": "string"
+                    },
+                    "ano_projeto": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "segmento": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "uf": {
+                        "type": "string"
+                    },
+                    "municipio": {
+                        "type": "string"
+                    },
+                    "data_inicio": {
+                        "type": "string"
+                    },
+                    "data_termino": {
+                        "type": "string"
+                    },
+                    "situacao": {
+                        "type": "string"
+                    },
+                    "mecanismo": {
+                        "type": "string"
+                    },
+                    "enquadramento": {
+                        "type": "string"
+                    },
+                    "valor_captado": {
+                        "type": "string"
+                    },
+                    "valor_aprovado": {
+                        "type": "string"
+                    },
+                    "acessibilidade": {
+                        "type": "string"
+                    },
+                    "objetivos": {
+                        "type": "string"
+                    },
+                    "justificativa": {
+                        "type": "string"
+                    },
+                    "etapa": {
+                        "type": "string"
+                    },
+                    "ficha_tecnica": {
+                        "type": "string"
+                    },
+                    "impacto_ambiental": {
+                        "type": "string"
+                    },
+                    "especificacao_tecnica": {
+                        "type": "string"
+                    },
+                    "providencia": {
+                        "type": "string"
+                    },
+                    "democratizacao": {
+                        "type": "string"
+                    },
+                    "sinopse": {
+                        "type": "string"
+                    },
+                    "resumo": {
+                        "type": "string"
+                    },
+                    "valor_projeto": {
+                        "type": "string"
+                    },
+                    "outras_fontes": {
+                        "type": "string"
+                    },
+                    "valor_proposta": {
+                        "type": "string"
+                    },
+                    "valor_solicitado": {
+                        "type": "string"
+                    },
+                    "objetivo": {
+                        "type": "string"
+                    },
+                    "estrategia_execucao": {
+                        "type": "string"
+                    },
+                    "link_incentivadores": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ProjetoCreateRequest": {
+                "required": [
+                    "pronac",
+                    "ano_projeto",
+                    "nome",
+                    "segmento",
+                    "area",
+                    "uf",
+                    "municipio",
+                    "data_inicio",
+                    "data_termino",
+                    "situacao",
+                    "mecanismo",
+                    "enquadramento",
+                    "valor_captado",
+                    "valor_aprovado",
+                    "acessibilidade",
+                    "ficha_tecnica",
+                    "impacto_ambiental",
+                    "especificacao_tecnica",
+                    "democratizacao",
+                    "sinopse",
+                    "resumo",
+                    "valor_projeto",
+                    "outras_fontes",
+                    "valor_proposta",
+                    "valor_solicitado",
+                    "objetivo",
+                    "estrategia_execucao",
+                    "link_incentivadores"
+                ],
+                "properties": {
+                    "pronac": {
+                        "type": "string"
+                    },
+                    "ano_projeto": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "segmento": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "uf": {
+                        "type": "string"
+                    },
+                    "municipio": {
+                        "type": "string"
+                    },
+                    "data_inicio": {
+                        "type": "string"
+                    },
+                    "data_termino": {
+                        "type": "string"
+                    },
+                    "situacao": {
+                        "type": "string"
+                    },
+                    "mecanismo": {
+                        "type": "string"
+                    },
+                    "enquadramento": {
+                        "type": "string"
+                    },
+                    "valor_captado": {
+                        "type": "string"
+                    },
+                    "valor_aprovado": {
+                        "type": "string"
+                    },
+                    "acessibilidade": {
+                        "type": "string"
+                    },
+                    "objetivos": {
+                        "type": "string"
+                    },
+                    "justificativa": {
+                        "type": "string"
+                    },
+                    "etapa": {
+                        "type": "string"
+                    },
+                    "ficha_tecnica": {
+                        "type": "string"
+                    },
+                    "impacto_ambiental": {
+                        "type": "string"
+                    },
+                    "especificacao_tecnica": {
+                        "type": "string"
+                    },
+                    "providencia": {
+                        "type": "string"
+                    },
+                    "democratizacao": {
+                        "type": "string"
+                    },
+                    "sinopse": {
+                        "type": "string"
+                    },
+                    "resumo": {
+                        "type": "string"
+                    },
+                    "valor_projeto": {
+                        "type": "string"
+                    },
+                    "outras_fontes": {
+                        "type": "string"
+                    },
+                    "valor_proposta": {
+                        "type": "string"
+                    },
+                    "valor_solicitado": {
+                        "type": "string"
+                    },
+                    "objetivo": {
+                        "type": "string"
+                    },
+                    "estrategia_execucao": {
+                        "type": "string"
+                    },
+                    "link_incentivadores": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ProjetoUpdateRequest": {
+                "properties": {
+                    "pronac": {
+                        "type": "string"
+                    },
+                    "ano_projeto": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "segmento": {
+                        "type": "string"
+                    },
+                    "area": {
+                        "type": "string"
+                    },
+                    "uf": {
+                        "type": "string"
+                    },
+                    "municipio": {
+                        "type": "string"
+                    },
+                    "data_inicio": {
+                        "type": "string"
+                    },
+                    "data_termino": {
+                        "type": "string"
+                    },
+                    "situacao": {
+                        "type": "string"
+                    },
+                    "mecanismo": {
+                        "type": "string"
+                    },
+                    "enquadramento": {
+                        "type": "string"
+                    },
+                    "valor_captado": {
+                        "type": "string"
+                    },
+                    "valor_aprovado": {
+                        "type": "string"
+                    },
+                    "acessibilidade": {
+                        "type": "string"
+                    },
+                    "objetivos": {
+                        "type": "string"
+                    },
+                    "justificativa": {
+                        "type": "string"
+                    },
+                    "etapa": {
+                        "type": "string"
+                    },
+                    "ficha_tecnica": {
+                        "type": "string"
+                    },
+                    "impacto_ambiental": {
+                        "type": "string"
+                    },
+                    "especificacao_tecnica": {
+                        "type": "string"
+                    },
+                    "providencia": {
+                        "type": "string"
+                    },
+                    "democratizacao": {
+                        "type": "string"
+                    },
+                    "sinopse": {
+                        "type": "string"
+                    },
+                    "resumo": {
+                        "type": "string"
+                    },
+                    "valor_projeto": {
+                        "type": "string"
+                    },
+                    "outras_fontes": {
+                        "type": "string"
+                    },
+                    "valor_proposta": {
+                        "type": "string"
+                    },
+                    "valor_solicitado": {
+                        "type": "string"
+                    },
+                    "objetivo": {
+                        "type": "string"
+                    },
+                    "estrategia_execucao": {
+                        "type": "string"
+                    },
+                    "link_incentivadores": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
