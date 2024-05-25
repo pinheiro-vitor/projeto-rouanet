@@ -17,10 +17,6 @@ O Projeto é um teste em um processo seletivo para uma vaga na empresa SIMBI.
 - **Chakra UI**: Biblioteca de componentes para estilizar o aplicativo.
 - **Swiper**: Biblioteca para criar carrosséis e sliders responsivos.
 
-## Funcionalidades
-- Listagem de projetos culturais aprovados e captados.
-- Exibição de detalhes dos projetos, incluindo nome, município, estado, resumo e valores aprovados e captados.
-- Interface amigável e responsiva.
 
 ## Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
