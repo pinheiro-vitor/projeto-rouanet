@@ -2,15 +2,16 @@ import api from "./api";
 import { IProjeto } from "../@types/projeto";
 import { AxiosResponse } from "axios";
 
-interface IResponse {
-  status: boolean;
-  message: string;
-  data: IProjeto[];
-}
-
 class ProjetoService {
-  async fetchAll(): Promise<AxiosResponse<IResponse>> {
-    return await api.get("/projetos");
+  async fetchAll(): Promise<AxiosResponse<IProjeto[]>> {
+    try {
+      const response = await api.get("/projetos");
+      console.log("API Response Data:", response.data);
+      return response;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error;
+    }
   }
 }
 
